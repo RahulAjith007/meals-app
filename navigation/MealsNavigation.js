@@ -10,21 +10,24 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
 import MealDetailScreen from '../screens/MealDetailScreen'
+import FavouritesScreen from '../screens/FavoritesScreen'
 
 //constants
 
 import colors from '../constants/colors';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import CustomHeaderButton from '../components/CustomHeaderButton'
-import { log } from 'react-native-reanimated';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 
 const MealsNavigator = createStackNavigator();
+const MealsFavTabNavigator = createBottomTabNavigator();
+
 
 const MealsNavigation = props => {
   return (
-    <NavigationContainer>
+    
       <MealsNavigator.Navigator mode={'card'} screenOptions={{  headerStyle:{
                                                   backgroundColor: Platform.OS === 'android'? colors.primaryColor : ''
                                              },
@@ -58,8 +61,19 @@ const MealsNavigation = props => {
           )}
         />
       </MealsNavigator.Navigator>
-    </NavigationContainer>
+   
   );
 }
 
-export default MealsNavigation;
+
+const MealsTabNavigation = props => {
+  return (
+    <NavigationContainer>
+  <MealsFavTabNavigator.Navigator>
+      <MealsFavTabNavigator.Screen name="Home" component={MealsNavigation} />
+      <MealsFavTabNavigator.Screen name="Settings" component={FavouritesScreen} />
+ </MealsFavTabNavigator.Navigator>
+ </NavigationContainer>
+)}
+
+export default MealsTabNavigation;
