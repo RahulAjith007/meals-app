@@ -14,7 +14,7 @@ export const CATEGORIES = [
     new Category('c10', 'Summer', '#47fced')
 ]
 
-export const MEAL = [
+export const MEALS = [
     new Meal(
         'm1',
         ['c1', 'c2'],
