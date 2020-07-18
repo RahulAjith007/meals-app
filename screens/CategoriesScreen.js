@@ -11,7 +11,7 @@ const CategoriesScreen = props => {
 const renderGridItem = (itemData) => {
   return (
     <CategoryGridTile color={itemData.item.color} title = {itemData.item.title} onSelect = {() => {
-      props.navigation.navigate('Meals', {id: itemData.item.id})
+      props.navigation.navigate('Meals', {id: itemData.item.id, title: itemData.item.title})
     }}/>
   )}
 

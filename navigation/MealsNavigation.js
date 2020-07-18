@@ -14,6 +14,9 @@ import MealDetailScreen from '../screens/MealDetailScreen'
 //constants
 
 import colors from '../constants/colors';
+import {HeaderButtons, Item} from 'react-navigation-header-buttons'
+import CustomHeaderButton from '../components/CustomHeaderButton'
+import { log } from 'react-native-reanimated';
 
 
 
@@ -39,7 +42,21 @@ const MealsNavigation = props => {
           { route } ) => ({ title: route.params.title })}
 
         />
-        <MealsNavigator.Screen name="Details" component={MealDetailScreen} />
+        <MealsNavigator.Screen 
+        name="Details" 
+        component={MealDetailScreen} 
+        options={(
+          { route } ) => ({ title: route.params.title,
+            headerRight: () => ( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                    <Item 
+                    title='Favourite' 
+                    iconName='ios-star' 
+                    onPress={() => {
+                      console.log('mark as Favourite')
+                    }}/>
+                </HeaderButtons>)}
+          )}
+        />
       </MealsNavigator.Navigator>
     </NavigationContainer>
   );
