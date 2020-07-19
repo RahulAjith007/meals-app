@@ -5,8 +5,6 @@ import CategoryGridTile from '../components/CategoryGridTile';
 
 
 const CategoriesScreen = props => {
-
-  console.log(props);
   
 const renderGridItem = (itemData) => {
   return (

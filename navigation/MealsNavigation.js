@@ -22,6 +22,7 @@ import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import CustomHeaderButton from '../components/CustomHeaderButton'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Ionicons, Feather} from '@expo/vector-icons'
+import { log } from 'react-native-reanimated';
 
 
 
@@ -164,17 +165,20 @@ const FilterStackNavigation = navData => {
         <FilterNavigator.Screen 
         name="Filter" 
         component={FiltersScreen} 
-        options={{
-          title: " Filter",
-          headerLeft: () => ( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+
+        options={(
+          { route } ) => ({
+            headerLeft: () => ( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
             <Item 
             title='Menu' 
             iconName='ios-menu' 
             onPress={() => {
               navData.navigation.toggleDrawer()
             }}/>
-        </HeaderButtons>)
-        }}
+        </HeaderButtons>),
+           }
+          )}
+      
         />
       </FilterNavigator.Navigator>
    
@@ -210,7 +214,7 @@ const MainNavigator = navData => {
                 onPress={() => {
                   navData.navigation.toggleDrawer()
                 }}/>
-            </HeaderButtons>)
+            </HeaderButtons>),
         }}
         />
       </Drawer.Navigator>
