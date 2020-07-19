@@ -4,6 +4,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import MealsNavigation from './navigation/MealsNavigation'
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux'
+import mealsReducer from './store/reducers/meals';
+
+const rootReducer = combineReducers({
+  meals: mealsReducer
+})
+
+const store = createStore(rootReducer);
 
 const FetchFonts = () => {
   return Font.loadAsync({
@@ -23,7 +32,10 @@ if(!fontLoaded){
 }
 
   return (
-   <MealsNavigation/>
+    <Provider store={store}>
+      <MealsNavigation/>
+    </Provider>
+   
   );
 }
 
