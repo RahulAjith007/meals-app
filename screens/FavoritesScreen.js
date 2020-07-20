@@ -1,15 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import MealList from '../components/MealList';
-import {MEALS} from  '../data/Dummy-Data';
+import {useSelector} from 'react-redux';
+import DefaultText from '../components/DefaultText'
+
 
 const FavoritesScreen = props => {
 
-  const favMeals = MEALS.filter(MEAL => MEAL.id === 'm1' || MEAL.id === 'm2')
+  const favMeals = useSelector(state => state.meals.favouriteMeals)
+
+
+let screenContent = <MealList listData = {favMeals} navigation={props.navigation}/>
+
+
+if(favMeals.length ===0 || !favMeals){ 
+  screenContent = <DefaultText>No Favourite Meals found. Start adding some!</DefaultText>
+}
 
   return (
     <View style={styles.screen}>
-      <MealList listData = {favMeals} navigation={props.navigation}/>
+      {screenContent}
     </View>
   );
 };

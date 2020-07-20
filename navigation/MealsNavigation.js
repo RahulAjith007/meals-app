@@ -66,15 +66,7 @@ const MealsStackNavigation = navData => {
         name="Details" 
         component={MealDetailScreen} 
         options={(
-          { route } ) => ({ title: route.params.title,
-            headerRight: () => ( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-                    <Item 
-                    title='Favourite' 
-                    iconName='ios-star' 
-                    onPress={() => {
-                      console.log('mark as Favourite')
-                    }}/>
-                </HeaderButtons>)}
+          { route } ) => ({ title: route.params.title}
           )}
         />
       </MealsNavigator.Navigator>
@@ -94,7 +86,16 @@ const FavStackNavigation = navData => {
         name="Favourites" 
         component={FavouritesScreen} 
         options={{
-          title: " Your Favourites"
+          title: " Your Favourites",
+          headerLeft: () => ( <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+            <Item 
+            title='Menu' 
+            iconName='ios-menu' 
+            onPress={() => {
+              navData.navigation.toggleDrawer()
+            }}/>
+        </HeaderButtons>)
+          
         }}
 
         />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity, FlatList} from 'react-native';
+import { StyleSheet, FlatList} from 'react-native';
 import {CATEGORIES} from '../data/Dummy-Data';
 import CategoryGridTile from '../components/CategoryGridTile';
 

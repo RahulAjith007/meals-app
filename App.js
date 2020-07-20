@@ -6,7 +6,7 @@ import { AppLoading } from 'expo';
 import MealsNavigation from './navigation/MealsNavigation'
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux'
-import mealsReducer from './store/reducers/meals';
+import mealsReducer from './store/reducers/mealsReducer';
 
 const rootReducer = combineReducers({
   meals: mealsReducer
